@@ -43,13 +43,11 @@ public class SpellChecker {
 		String[] dictionary = new String[3000];
 
 		In in = new In(fileName);
-
-        for (int i = 0; i < dictionary.length; i++) {
-            dictionary[i] = in.readLine();
-        }
-
-        return dictionary;
-    }
+		for (int i = 0; i < dictionary.length; i++) {
+				dictionary[i] = in.readString();
+			}
+		return dictionary;
+	}
 
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
