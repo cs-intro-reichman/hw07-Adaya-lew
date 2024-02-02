@@ -26,10 +26,10 @@ public class SpellChecker {
 			return lword1;
 		if(lword1 == 0)
 			return lword2;
-		if (word1.charAt(0) == word2.charAt(0))
-			return levenshtein(tail(word1), tail(word2));//Otherwise try all three possible actions and select the best one
+		if (lowerC1.charAt(0) == lowerC2.charAt(0))
+			return levenshtein(tail(lowerC1), tail(lowerC2));//Otherwise try all three possible actions and select the best one
 		else {
-			return 1 + Math.min(Math.min(levenshtein(tail(word1), word2), levenshtein(word1, tail(word2))), levenshtein(tail(word1), tail(word2)));
+			return 1 + Math.min(Math.min(levenshtein(tail(lowerC1), lowerC2), levenshtein(lowerC1, tail(lowerC2))), levenshtein(tail(lowerC1), tail(lowerC2)));
 		}
 
 	}
