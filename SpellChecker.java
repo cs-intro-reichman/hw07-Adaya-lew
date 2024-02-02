@@ -17,23 +17,29 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
-		String lowerC1 = word1.toLowerCase();  //make it to toLowerCase lethers
-		String lowerC2 = word2.toLowerCase();
-
-		int lword1 = word1.length();
-		int lword2 = word2.length();
-
-		if(lword2 == 0)
-			return lword1;
-		if(lword1 == 0)
-			return lword2;
-		if (word1.charAt(0) == word2.charAt(0))
-			return levenshtein(tail(word1), tail(word2));//Otherwise try all three possible actions and select the best one
-		else {
-			return 1 + Math.min(Math.min(levenshtein(tail(word1), word2), levenshtein(word1, tail(word2))), levenshtein(tail(word1), tail(word2)));
+		word1 = word1.toLowerCase();
+		word2 = word2.toLowerCase();
+		int l1 = word1.length();
+		int l2 = word2.length();
+		if (l2 == 0)
+		{
+            return l1;
+        }
+		else if (l1 == 0)
+		{
+			return l2;
+		} 
+		else if (word1.charAt(0) == word2.charAt(0))
+		{
+			return levenshtein(tail(word1),tail(word2));
 		}
-
+		else
+		{
+			return 1+minimal(levenshtein(tail(word1),word2),levenshtein(word1,tail(word2)),levenshtein(tail(word1),tail(word2)));
+		}
+		
 	}
+
 
 
 
